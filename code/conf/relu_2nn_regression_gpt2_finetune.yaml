@@ -1,0 +1,17 @@
+inherit: 
+    - base_toy.yaml
+
+training:
+    task: relu_2nn_regression
+    task_kwargs: {"hidden_layer_size": 256}
+    curriculum:
+        points:
+            start: 16
+            end: 512
+            inc: 16
+            interval: 5000
+
+out_dir: /home/ismail/in-context-learning-main/src/models/gpt2_finetune
+
+wandb:
+    name: "relu_2nn_regression"

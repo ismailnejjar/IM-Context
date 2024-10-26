@@ -1,0 +1,41 @@
+config: conf/relu_2nn_regression.yaml
+inherit:
+- base.yaml
+model:
+  family: gpt2
+  n_dims: 20
+  n_embd: 256
+  n_head: 8
+  n_layer: 12
+  n_positions: 201
+out_dir: ../models/relu_2nn_regression
+test_run: false
+training:
+  batch_size: 64
+  curriculum:
+    dims:
+      end: 20
+      inc: 1
+      interval: 2000
+      start: 5
+    points:
+      end: 101
+      inc: 5
+      interval: 2000
+      start: 26
+  data: gaussian
+  keep_every_steps: 100000
+  learning_rate: 0.0001
+  num_tasks: null
+  resume_id: null
+  save_every_steps: 1000
+  task: relu_2nn_regression
+  task_kwargs:
+    hidden_layer_size: 100
+  train_steps: 500001
+wandb:
+  entity: in-context
+  log_every_steps: 100
+  name: relu_2nn_regression_pretrained
+  notes: ''
+  project: in-context-training

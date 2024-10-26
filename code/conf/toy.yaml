@@ -1,0 +1,33 @@
+inherit: 
+    - models/GPT2.yaml
+    - wandb.yaml
+
+model:
+    n_dims: 256
+    n_positions: 1024
+
+training:
+    task: task: relu_2nn_regression
+    task_kwargs: {"hidden_layer_size": 255}
+    data: gaussian
+    batch_size: 64
+    learning_rate: 0.0001
+    save_every_steps: 1000
+    keep_every_steps: 100000
+    train_steps: 500001
+    curriculum:
+        dims:
+            start: 16
+            end: 256
+            inc: 16
+            interval: 10000
+        points:
+            start: 32
+            end: 1024
+            inc: 16
+            interval: 10000
+
+out_dir: /home/ismail/in-context-learning-main/src/models/gpt2_finetune
+
+wandb:
+    name: "relu_2nn_regression"

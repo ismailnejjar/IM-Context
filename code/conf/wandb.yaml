@@ -1,0 +1,6 @@
+wandb:
+    project: in-context-training
+    entity: ismail-nejjar
+    name: ismailnejjar
+    notes: 
+    log_every_steps: 100
